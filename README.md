@@ -5,7 +5,7 @@ Koishi 插件市场镜像源，通过 GitHub Actions 定时同步官方 registry
 ## 镜像地址
 
 - GitHub Pages: `https://lezhengan.github.io/koishi-registry-lezhengan/index.json`
-- jsDelivr CDN: `https://cdn.jsdelivr.net/gh/Lezhengan/koishi-registry-lezhengan@gh-pages/index.json`应急使用
+- jsDelivr CDN: `https://cdn.jsdelivr.net/gh/Lezhengan/koishi-registry-lezhengan@gh-pages/index.json`
 
 ## 在 Koishi 中使用
 
