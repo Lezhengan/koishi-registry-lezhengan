@@ -1,0 +1,31 @@
+name: Sync Registry
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'   # 每 3 小时自动同步一次
+  workflow_dispatch:        # 支持手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 下载官方 registry 索引
+        run: |
+          mkdir -p public
+          curl -sL --fail -o public/index.json https://registry.koishi.chat/index.json
+          test -s public/index.json
+
+      - name: 部署到 gh-pages 分支
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: '41898282+github-actions[bot]@users.noreply.github.com'
